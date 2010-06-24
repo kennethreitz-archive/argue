@@ -1,0 +1,132 @@
+Metadata-Version: 1.0
+Name: opster
+Version: 0.9.10
+Summary: command line parsing speedster
+Home-page: http://hg.piranha.org.ua/opster/
+Author: Alexander Solovyov
+Author-email: piranha@piranha.org.ua
+License: BSD
+Description: .. -*- mode: rst -*-
+        
+        ========
+        Opster
+        ========
+        
+        Opster is a command line parser, intended to make writing command line
+        applications easy and painless. It uses built-in Python types (lists,
+        dictionaries, etc) to define options, which makes configuration clear and
+        concise. Additionally it contains possibility to handle subcommands (i.e.
+        ``hg commit`` or ``svn update``).
+        
+        Quick example
+        -------------
+        
+        That's an example of an option definition::
+        
+        import sys
+        from opster import command
+        
+        @command(usage='%name [-n] MESSAGE')
+        def main(message,
+        nonewline=('n', False, 'don\'t print a newline')):
+        'Simple echo program'
+        sys.stdout.write(message)
+        if not nonewline:
+        sys.stdout.write('\n')
+        
+        if __name__ == '__main__':
+        main()
+        
+        Running this program will print the help::
+        
+        echo.py [-n] MESSAGE
+        
+        Simple echo program
+        
+        options:
+        
+        -n --nonewline  don't print a newline
+        -h --help       show help
+        
+        I think this mostly describes what's going on, except that I'd like to mention
+        one interesting feature - if you are using long name for option, you can use
+        only partial name, for example ``./echo.py --nonew`` a is valid command
+        line. This is also true for subcommands: read about that and everything else
+        you'd like to know in `documentation`_.
+        
+        .. _documentation: http://hg.piranha.org.ua/opster/docs/
+        
+        
+        Changelog
+        ---------
+        
+        0.9.10
+        ~~~~~~
+        
+        - if default value of an option is a fuction, always call it (None is passed in
+        case when option is not supplied)
+        - always call a function if it's default argument for an option
+        - some cleanup with better support for python 3
+        - initial support for autocompletion (borrowed from PIP)
+        
+        0.9.9
+        ~~~~~
+        - Now it's possible to call commands as regular function, where every
+        non-supplied option will receive proper default (defined in option spec)
+        - Globaloptions were simply dropped after parsing, fold them in regular options
+        - Replace _ with - in command names, same as in options names
+        - Respect empty strings as usage
+        
+        0.9.8
+        ~~~~~
+        Fixed bug with option names clashing with name of arguments for call_cmd.
+        
+        0.9.7
+        ~~~~~
+        Library renamed to opster.
+        
+        0.9.6
+        ~~~~~
+        - Checks for option definition: long name should be specified always, short
+        name should be 1 character in length if available.
+        - More specific argument name in guessed usage (this happens if you have not
+        specified usage for command).
+        - Ability to add global decorator for all commands. See ``test.py`` in
+        repository for example: ``ui`` object, to handle verbose/quiet options.
+        
+        0.9.5
+        ~~~~~
+        Fixed bug, which prevented programs to work without arguments (displayed help
+        instead) if they are not using subcommands.
+        
+        0.9.4
+        ~~~~~
+        - Ability to hide subcommands from help listing.
+        - Append program name to subcommand usage.
+        
+        0.9.3
+        ~~~~~
+        Minor fix for setup.py, to avoid troubles with installing when there is no docs
+        in package.
+        
+        0.9.2
+        ~~~~~
+        Ability to call commands as regular functions, using arguments and keyword
+        arguments.
+        
+        0.9.1
+        ~~~~~
+        Fixed problem with multiple help options in subcommands
+        
+        0.9
+        ~~~
+        Initial version
+        
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development

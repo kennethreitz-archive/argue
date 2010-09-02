@@ -31,7 +31,7 @@ from helpers import *
 
 __author__ = 'Kenneth Reitz'
 __email__ = 'me@kennethreitz.com'
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 __license__ = 'MIT'
 
 __all__ = ('command', 'dispatch')

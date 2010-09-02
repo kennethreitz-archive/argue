@@ -25,8 +25,9 @@ setup(
 	author_email='me@kennethreitz.com',
 	url='http://github.com/kennethreitz/argue',
 	packages=['argue'],
-	license='BSD',
+	license='MIT',
 	classifiers=(
+		""
 		"Development Status :: 4 - Beta",
 		"License :: OSI Approved :: MIT License",
 		"Programming Language :: Python",

@@ -3,7 +3,7 @@
 
 import os
 import sys
-import gistapi
+import argue
 
 from distutils.core import setup
 

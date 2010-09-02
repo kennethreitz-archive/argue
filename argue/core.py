@@ -36,9 +36,9 @@ from helpers import *
 __author__ = 'Kenneth Reitz'
 __email__ = 'me@kennethreitz.com'
 __version__ = '0.1.0'
-__license__ = 'BSD'
+__license__ = 'MIT'
 
-__all__ = ['command', 'dispatch']
+__all__ = ('command', 'dispatch')
 
 
 

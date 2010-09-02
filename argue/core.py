@@ -71,6 +71,7 @@ def command(options=None, usage=None, name=None, shortlist=False, hide=False):
             options_ = list(guess_options(func))
         except TypeError:
             options_ = []
+
         try:
             options_ = options_ + list(options)
         except TypeError:
@@ -121,8 +122,7 @@ def command(options=None, usage=None, name=None, shortlist=False, hide=False):
     return wrapper
 
 
-def dispatch(args=None, cmdtable=None, globaloptions=None,
-             middleware=lambda x: x):
+def dispatch(args=None, cmdtable=None, globaloptions=None, middleware=lambda x: x):
     '''Dispatch command arguments based on subcommands.
 
     - ``args``: list of arguments, default: ``sys.argv[1:]``
@@ -202,8 +202,7 @@ def help_(cmdtable, globalopts):
                 if False: # verbose?
                     write(' %s:\n     %s\n' % (cmd.replace('|', ', '), doc))
                 else:
-                    write(' %-*s  %s\n' % (maxlen, cmd.split('|', 1)[0],
-                                              doc))
+                    write(' %-*s  %s\n' % (maxlen, cmd.split('|', 1)[0], doc))
 
         if not cmdtable:
             return err('No commands specified!\n')
@@ -514,4 +513,3 @@ def completion(type=('t', 'zsh', 'Completion type (bash or zsh)')):
 
     prog_name = os.path.split(sys.argv[0])[1]
     print COMPLETIONS[type] % prog_name
-

@@ -4,8 +4,8 @@ Argue
 Argue is a command line parser, intended to make writing command line
 applications easy and painless. It uses built-in Python types (lists,
 dictionaries, etc) to define options, which makes configuration clear and
-concise. Additionally it contains possibility to handle subcommands (i.e.
-``hg commit`` or ``svn update``).
+concise. Additionally it contains possibility to handle subcommands (e.g.
+``git commit`` or ``svn obliterate``).
 
 Quick example
 -------------

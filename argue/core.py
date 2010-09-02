@@ -28,6 +28,8 @@ import types
 
 from itertools import imap
 
+from packages.decorator import decorator
+
 
 __author__ = 'Kenneth Reitz'
 __email__ = 'me@kennethreitz.com'
@@ -47,6 +49,7 @@ CMDTABLE = {}
 # --------
 # Public interface
 # --------
+
 
 def command(options=None, usage=None, name=None, shortlist=False, hide=False):
     '''Decorator to mark function to be used for command line processing.
@@ -611,7 +614,7 @@ compctl -K _argue_completion %s
     }
 
 @command(name='_completion', hide=True)
-def completion(type=('t', 'bash', 'Completion type (bash or zsh)')):
+def completion(type=('t', 'zsh', 'Completion type (bash or zsh)')):
     """Outputs completion script for bash or zsh."""
 
     prog_name = os.path.split(sys.argv[0])[1]

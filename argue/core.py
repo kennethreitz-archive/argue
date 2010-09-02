@@ -4,7 +4,7 @@
 Argue: Because Every Python Application Needs a Strong Argument!
 
 Based on the Opster by Alexander Solovyov <piranha@piranha.org.ua>.
-For now, consider them one in the same. 
+For now, consider this a carbon copy. Carbon Fibre! 
 """
 
 
@@ -29,6 +29,8 @@ import types
 from itertools import imap
 
 from packages.decorator import decorator
+from exceptions import *
+from helpers import *
 
 
 __author__ = 'Kenneth Reitz'
@@ -191,7 +193,7 @@ def help_(cmdtable, globalopts):
                 if shortlist and not cmd.startswith('^'):
                     continue # short help contains only marked commands
                 cmd = cmd.lstrip('^~')
-                doc = info[0].__doc__ or '(no help text available)'
+                doc = trim(info[0].__doc__) or '(no help text available)'
                 hlp[cmd] = doc.splitlines()[0].rstrip()
 
             hlplist = sorted(hlp)
@@ -255,7 +257,7 @@ def help_cmd(func, usage, options):
     <BLANKLINE>
     '''
     write(usage + '\n')
-    doc = func.__doc__
+    doc = trim(func.__doc__)
     if not doc:
         doc = '(no help text available)'
     write('\n' + doc.strip() + '\n\n')
@@ -620,25 +622,3 @@ def completion(type=('t', 'zsh', 'Completion type (bash or zsh)')):
     prog_name = os.path.split(sys.argv[0])[1]
     print COMPLETIONS[type] % prog_name
 
-# --------
-# Exceptions
-# --------
-
-# Command exceptions
-class CommandException(Exception):
-    'Base class for command exceptions'
-
-class AmbiguousCommand(CommandException):
-    'Raised if command is ambiguous'
-
-class UnknownCommand(CommandException):
-    'Raised if command is unknown'
-
-class ParseError(CommandException):
-    'Raised on error in command line parsing'
-
-class Abort(CommandException):
-    'Abort execution'
-
-class FOError(CommandException):
-    'Raised on trouble with argue configuration'

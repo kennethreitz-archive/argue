@@ -1,38 +1,37 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import os
-from setuptools import setup
-import opster
+import sys
+import gistapi
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+from distutils.core import setup
 
-def desc():
-    info = read('README')
-    try:
-        return info + '\n\n' + read('docs/changelog.rst')
-    except IOError:
-        # no docs
-        return info
+
+def publish():
+	"""Publish to PyPi"""
+	os.system("python setup.py sdist upload")
+
+if sys.argv[-1] == "publish":
+	publish()
+	sys.exit()
 
 setup(
-    name = 'opster',
-    description = 'command line parsing speedster',
-    long_description = desc(),
-    license = 'BSD',
-    version = opster.__version__,
-    author = opster.__author__,
-    author_email = opster.__email__,
-    url = 'http://hg.piranha.org.ua/opster/',
-    classifiers = [
-        'Development Status :: 4 - Beta',
-        'Environment :: Console',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Topic :: Software Development',
-        ],
-    py_modules = ['opster'],
-    platforms='any',
-    )
+	name='argue',
+	version=argue.__version__,
+	description='Python apps deserve a good argument!',
+	long_description=open('README.rst').read() + '\n\n' + open('HISTORY.rst').read(),
+	author='Kenneth Reitz',
+	author_email='me@kennethreitz.com',
+	url='http://github.com/kennethreitz/argue',
+	packages=['argue'],
+	license='BSD',
+	classifiers=(
+		"Development Status :: 4 - Beta",
+		"License :: OSI Approved :: MIT License",
+		"Programming Language :: Python",
+		"Programming Language :: Python :: 2.5",
+		"Programming Language :: Python :: 2.6",
+		"Programming Language :: Python :: 2.7",
+	)
+)

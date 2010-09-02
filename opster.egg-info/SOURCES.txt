@@ -1,8 +1,0 @@
-README
-opster.py
-setup.cfg
-setup.py
-opster.egg-info/PKG-INFO
-opster.egg-info/SOURCES.txt
-opster.egg-info/dependency_links.txt
-opster.egg-info/top_level.txt

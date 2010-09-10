@@ -24,14 +24,13 @@ import types
 
 from itertools import imap
 
-from packages.decorator import decorator
 from exceptions import *
 from helpers import *
 
 
 __author__ = 'Kenneth Reitz'
 __email__ = 'me@kennethreitz.com'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 __license__ = 'MIT'
 
 __all__ = ('command', 'dispatch')
@@ -303,14 +302,11 @@ def parse(args, options):
     shortlist, namelist, funlist = '', [], []
 
     for short, name, default, comment in options:
-        if short and len(short) != 1:
-            raise FOError('Short option should be only a single'
-                          ' character: %s' % short)
         if not name:
             raise FOError(
                 'Long name should be defined for every option')
         # change name to match Python styling
-        pyname = name.replace('-', '_')
+        pyname = name.replace('-', '_').split()[0]
         argmap['-' + short] = argmap['--' + name] = pyname
         defmap[pyname] = default
 

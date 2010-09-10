@@ -16,8 +16,7 @@ That's an example of an option definition::
   import argue
 
   @argue.command(usage='%name [-n] MESSAGE')
-  def main(message,
-           nonewline=('n', False, 'don\'t print a newline')):
+  def main(message, nonewline=('n', False, 'no newline')):
       'Simple echo program'
       sys.stdout.write(message)
       if not nonewline:
@@ -34,7 +33,7 @@ Running this program will print the help::
 
   options:
 
-   -n --nonewline  don't print a newline
+   -n --nonewline  no newline
    -h --help       show help
 
 I think this mostly describes what's going on, except that I'd like to mention

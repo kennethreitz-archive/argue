@@ -1,3 +1,10 @@
+v0.1.3 (08-10-2010)
+===================
+
+- Added optional long argument value in help view
+- Allow short commands of arbitrary length
+
+
 v0.1.2 (08-02-2010)
 ===================
 

@@ -1,0 +1,11 @@
+include AUTHORS 
+include HISTORY.rst 
+include README.rst 
+include LICENSE 
+include NOTICE 
+include reqs.txt 
+
+recursive-include docs
+recursive-include *.py
+recursive-include argue *
+recursive-include argue/packages *

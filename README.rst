@@ -10,7 +10,7 @@ concise. Additionally it contains possibility to handle subcommands (e.g.
 Quick example
 -------------
 
-That's an example of an option definition::
+That's an example of an option definition: ::
 
   import sys
   import argue
@@ -43,3 +43,10 @@ line. This is also true for subcommands: read about that and everything else
 you'd like to know in `documentation`_.
 
 .. _documentation: http://hg.piranha.org.ua/opster/docs/
+
+Installation
+------------
+
+$ pip install argue
+
+
